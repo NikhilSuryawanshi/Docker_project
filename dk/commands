@@ -1,0 +1,21 @@
+docker rm -f $(docker ps -a -q)
+
+docker-compose up -d
+
+mysql -h 172.17.0.2 -u root -p
+
+docker run -d -it -e MYSQL_ROOT_PASSWORD=root -e MYSQL_USER=nik -e MYSQL_PASSWORD=nik --name mydb mysql:5.7
+
+
+docker run -it --name c1 -v /run/media/root/RHEL-8-0-0-BaseOS-x86_64:/dvd centos
+
+
+
+
+docker run -dit -e WORDPRESS_DB_HOST=dbos -e WORDPRESS_DB_USER=vimal -e WORDPRESS_DB_PASSWORD=redhat -e WORDPRESS_DB_NAMEmydb -v wp_storage:/var/www/html --name wpos -p 8080:80 --link dbos wordpress:5.1.1-php7.3-apache
+
+
+docker run -dit --name cms -p 1235:80 --link complain -v /run/media/root/RHEL-8-0-0-BaseOS-x86_64:/dvd centos
+
+
+docker run -d -it -e MYSQL_ROOT_PASSWORD=root -e MYSQL_USER=nik -e MYSQL_PASSWORD=nik  -e MYSQL_DATABASE=cms --name complain mysql:5.7

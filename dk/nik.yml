@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+	dbos:
+		image: mysql:5.7
+		volumes:
+			- mysql_storage:/var/lib/mysql
+		restart: always
+		environment:
+			MYSQL_ROOT_PASSWORD: root
+			MYSQL_USER: nik
+			MYSQL_PASSWORD: nik
+			MYSQL_DATABASE: sssm
+
+	tomcatos:
+		image: tomcat
+		restart: always
+		depends_on: 
+			-dbos
+		ports:
+			-8080:8080
+		
+		volumes:
+			-project_storage:/usr/local/tomcat/webapps/
+volumes:
+	project_storage:
+	mysql_storage:
