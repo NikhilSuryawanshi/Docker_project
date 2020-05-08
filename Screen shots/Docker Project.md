@@ -107,5 +107,7 @@ docker-compose up -d
 
 
 then you will see the container started sucessfully now go to browser and type ip of host os and port , in my case my IP is 192.168.43.32 and port is 1234
+
 ![ss12]("12.png")
+
 
